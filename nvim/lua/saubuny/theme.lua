@@ -1,4 +1,4 @@
--- Set theme
+-- Set colorscheme
 local onedark = require('onedark')
 onedark.setup {
     style = 'dark',
@@ -24,14 +24,6 @@ onedark.setup {
         transparent = false,
     },
 
-    --[[ Use this to enable the theme with lualine
-    require('lualine').setup {
-        options = {
-            theme = 'onedark'
-            -- ... your lualine config
-      }
-    }
-    --]]
 
     -- Custom colors and highlights (requires TreeSitter)
     colors = {},
@@ -41,3 +33,10 @@ onedark.setup {
 }
 onedark.load();
 
+-- Lualine
+require('lualine').setup {
+    options = {
+        theme = 'auto',
+        icons_enabled = true,
+    }
+}

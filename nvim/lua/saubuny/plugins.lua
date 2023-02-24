@@ -49,6 +49,12 @@ return packer.startup(function(use)
     -- Best colorscheme
     use 'navarasu/onedark.nvim'
 
+    -- Practically mandatory
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+
     -- Common dependency
     use 'nvim-lua/plenary.nvim'
 
