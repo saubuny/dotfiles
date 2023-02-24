@@ -1,7 +1,7 @@
 -- :help options
 
 local options = {
-    -- Indentation 
+    -- Indentation
     expandtab = true,
     smartindent = true,
     shiftwidth = 4,
@@ -17,7 +17,7 @@ local options = {
     wrap = false,
     showmode = true,
     termguicolors = true,
-    -- vim.opt.signcolumn = 'yes',
+    signcolumn = 'yes',
 
     -- Editing
     fileencoding = 'utf-8',
