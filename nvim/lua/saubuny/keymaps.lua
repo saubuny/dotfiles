@@ -1,36 +1,38 @@
--- Basic options for keymaps
-local opts = { noremap = true, silent = true };
-
--- Shorten name
--- (mode, new keymap, command, options)
-local keymap = vim.api.nvim_set_keymap; 
+-- Basic options for vim.keymap.sets
+local opts = { noremap = true, silent = true }
 
 -- Remap leader key
-keymap("", "<Space>", "<Nop>", opts);
-vim.g.mapleader = " ";
-vim.g.maplocalleader = " ";
+vim.keymap.set('', '<Space>', '<Nop>', opts)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Window navigation
-keymap("n", "<C-h>", "<C-w>h", opts);
-keymap("n", "<C-j>", "<C-w>j", opts);
-keymap("n", "<C-k>", "<C-w>k", opts);
-keymap("n", "<C-l>", "<C-w>l", opts);
+vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 -- Open Netrw
-keymap("n", "<leader>e", ":Lex 40<CR>", opts);
+vim.keymap.set('n', '<leader>e', ':Lex 40<CR>', opts)
 
 -- Navigate buffers
-keymap("n", "<S-L>", ":bnext<CR>", opts);
-keymap("n", "<S-H>", ":bprevious<CR>", opts);
+vim.keymap.set('n', '<S-L>', ':bnext<CR>', opts)
+vim.keymap.set('n', '<S-H>', ':bprevious<CR>', opts)
 
 -- Indent in visual mode better
-keymap("v", "<", "<gv", opts);
-keymap("v", ">", ">gv", opts);
+vim.keymap.set('v', '<', '<gv', opts)
+vim.keymap.set('v', '>', '>gv', opts)
 
 -- Better pasting
-keymap("v", "p", '"_dP', opts);
+vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- Move line in visual block mode
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts);
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts);
+vim.keymap.set('x', 'J', ':move ">+1<CR>gv-gv', opts)
+vim.keymap.set('x', 'K', ':move "<-2<CR>gv-gv', opts)
 
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
+vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)

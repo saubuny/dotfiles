@@ -1,17 +1,17 @@
 local fn = vim.fn
 
 -- Auto-install Packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system {
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/wbthomason/packer.nvim",
+        'git',
+        'clone',
+        '--depth',
+        '1',
+        'https://github.com/wbthomason/packer.nvim',
         install_path,
     }
-    print "Installing Packer... Please restart Neovim";
+    print 'Installing Packer... Please restart Neovim';
     vim.cmd [[packadd packer.nvim]]
 end
 
@@ -24,7 +24,7 @@ vim.cmd [[
 ]]
 
 -- Packer protected call (No annoying errors)
-local status_ok, packer = pcall(require, "packer");
+local status_ok, packer = pcall(require, 'packer');
 if not status_ok then
     return
 end
@@ -34,28 +34,35 @@ packer.init {
     display = {
         -- Display in a popup window
         open_fn = function()
-            return require("packer.util").float { border = "rounded" }
+            return require('packer.util').float { border = 'rounded' }
         end,
     }
 }
 
 -- Install plugins here
 return packer.startup(function(use)
-    use "wbthomason/packer.nvim" -- Self-managing packer
-    -- ...
+    use 'wbthomason/packer.nvim' -- Self-managing packer
     
     -- Free colorschemes
-    -- use "lunarvim/colorschemes"
+    -- use 'lunarvim/colorschemes'
 
     -- Best colorscheme
-    use "navarasu/onedark.nvim"
+    use 'navarasu/onedark.nvim'
+
+    -- Common dependency
+    use 'nvim-lua/plenary.nvim'
+
+    -- Fuzzy finding (make sure ripgrep is installed)
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     
     -- Automaticall set up packer config (Put at end)
     if PACKER_BOOTSTRAP then
-        require("packer").sync()
+        require('packer').sync()
     end
 end)
-
 
 
 

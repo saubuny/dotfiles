@@ -1,13 +1,13 @@
 -- Set theme
-local onedark = require("onedark")
+local onedark = require('onedark')
 onedark.setup {
-    style = "dark",
+    style = 'dark',
     transparent = false,
     term_colors = true,
     ending_tildes = false,
 
     -- Change theme style
-    toggle_style_key = "<leader>ts", 
+    toggle_style_key = '<leader>ts', 
     toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
     
     -- Change code style (italic, bold, underline, none)
@@ -36,7 +36,7 @@ onedark.setup {
     -- Custom colors and highlights (requires TreeSitter)
     colors = {},
     highlights = {
-        -- ["@string"] = { fg = "$cyan" },
+        -- ['@string'] = { fg = '$cyan' },
     },
 }
 onedark.load();
