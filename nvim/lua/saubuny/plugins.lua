@@ -44,6 +44,12 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Self-managing packer
     -- ...
     
+    -- Free colorschemes
+    -- use "lunarvim/colorschemes"
+
+    -- Best colorscheme
+    use "navarasu/onedark.nvim"
+    
     -- Automaticall set up packer config (Put at end)
     if PACKER_BOOTSTRAP then
         require("packer").sync()

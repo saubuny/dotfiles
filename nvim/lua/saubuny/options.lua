@@ -16,6 +16,7 @@ local options = {
     splitright = true;
     wrap = false;
     showmode = true;
+    termguicolors = true;
     -- vim.opt.signcolumn = "yes";
 
     -- Editing
