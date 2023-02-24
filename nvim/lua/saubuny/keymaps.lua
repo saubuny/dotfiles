@@ -1,4 +1,4 @@
--- Basic options for vim.keymap.sets
+-- Basic options for vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Remap leader key
@@ -31,8 +31,9 @@ vim.keymap.set('x', 'J', ':move ">+1<CR>gv-gv', opts)
 vim.keymap.set('x', 'K', ':move "<-2<CR>gv-gv', opts)
 
 -- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, opts)
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, opts)
-vim.keymap.set('n', '<leader>fb', builtin.buffers, opts)
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, opts)
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', telescope.find_files, opts)
+vim.keymap.set('n', '<leader>gf', telescope.git_files, opts)
+vim.keymap.set('n', '<leader>fg', telescope.live_grep, opts)
+vim.keymap.set('n', '<leader>fb', telescope.buffers, opts)
+vim.keymap.set('n', '<leader>fh', telescope.help_tags, opts)
