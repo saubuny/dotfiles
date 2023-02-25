@@ -4,6 +4,65 @@ if not cmp_status_ok then
     return
 end
 
+
+-- Icons for menu
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
+local kind_icons2 = {
+  Text = '',
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Field = '',
+  Variable = '',
+  Class = '',
+  Interface = '',
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '',
+  Keyword = '',
+  Snippet = '',
+  Color = '',
+  File = '',
+  Reference = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
+
+
 -- Setup
 cmp.setup({
     window = {
@@ -24,6 +83,21 @@ cmp.setup({
         ['<C-k>'] = cmp.mapping.select_prev_item(),
         ['<C-j>'] = cmp.mapping.select_next_item(),
     }),
+    formatting = {
+        fields = { 'kind', 'abbr', 'menu' },
+        format = function(entry, vim_item)
+            -- Include icons
+            vim_item.kind = string.format('%s', kind_icons2[vim_item.kind])
+
+            -- Tell us where the completion came from
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                path = "[Path]"
+            })[entry.source.name]
+
+            return vim_item
+        end,
+    },
     sources = cmp.config.sources({
         -- { name = 'nvim_lsp' },
     }, {
