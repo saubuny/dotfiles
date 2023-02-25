@@ -83,7 +83,12 @@ return packer.startup(function(use)
         end,
     }
 
-    -- Set up LSP
+    -- Completion 
+    use "hrsh7th/nvim-cmp"    -- The plugin itself
+    use "hrsh7th/cmp-buffer"  -- Buffer completion
+    use "hrsh7th/cmp-path"    -- Path completion
+    use "hrsh7th/cmp-cmdline" -- Command line completion
+
     
     -- Automaticall set up packer config (Put at end)
     if PACKER_BOOTSTRAP then
