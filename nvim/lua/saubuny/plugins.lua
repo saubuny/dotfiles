@@ -64,8 +64,9 @@ return packer.startup(function(use)
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
-    -- Common dependency
+    -- Annoying dependencies that act weird 
     use 'nvim-lua/plenary.nvim'
+    use 'nvim-tree/nvim-web-devicons'
 
     -- Fuzzy finding (make sure ripgrep is installed)
     use {
