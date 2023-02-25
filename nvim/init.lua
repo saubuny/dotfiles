@@ -4,6 +4,7 @@ require("saubuny.plugins")
 require("saubuny.theme")
 require("saubuny.treesitter")
 require("saubuny.tree")
+require("saubuny.term")
 require("saubuny.cmp")
 -- require("saubuny.lsp")
 

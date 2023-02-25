@@ -74,6 +74,9 @@ return packer.startup(function(use)
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
+    -- Terminal
+    use {"akinsho/toggleterm.nvim", tag = '*' }
+
     -- Syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
