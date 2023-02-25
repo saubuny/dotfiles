@@ -12,9 +12,6 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
 vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
--- Open Netrw
-vim.keymap.set('n', '<leader>e', ':Lex 40<CR>', opts)
-
 -- Navigate buffers
 vim.keymap.set('n', '<S-L>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-H>', ':bprevious<CR>', opts)
@@ -37,3 +34,6 @@ vim.keymap.set('n', '<leader>gf', telescope.git_files, opts)
 vim.keymap.set('n', '<leader>fg', telescope.live_grep, opts)
 vim.keymap.set('n', '<leader>fb', telescope.buffers, opts)
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, opts)
+
+-- Nvim-tree
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
