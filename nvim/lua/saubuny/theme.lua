@@ -1,41 +1,41 @@
 -- Onedark config
 local onedark = require('onedark')
 onedark.setup {
-    style = 'dark',
+  style = 'dark',
+  transparent = false,
+  term_colors = true,
+  ending_tildes = false,
+
+  -- Change theme style
+  toggle_style_key = '<leader>ts',
+  toggle_style_list = { 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light' },
+
+  -- Change code style (italic, bold, underline, none)
+  code_style = {
+    comments = 'italic',
+    keywords = 'none',
+    functions = 'none',
+    strings = 'none',
+    variables = 'none'
+  },
+
+  -- Lualine config
+  lualine = {
     transparent = false,
-    term_colors = true,
-    ending_tildes = false,
-
-    -- Change theme style
-    toggle_style_key = '<leader>ts', 
-    toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
-    
-    -- Change code style (italic, bold, underline, none)
-    code_style = {
-        comments = 'italic',
-        keywords = 'none',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none'
-    },
-
-    -- Lualine config 
-    lualine = {
-        transparent = false,
-    },
+  },
 
 
-    -- Custom colors and highlights (requires TreeSitter)
-    colors = {},
-    highlights = {
-        -- ['@string'] = { fg = '$cyan' },
-    },
+  -- Custom colors and highlights (requires TreeSitter)
+  colors = {},
+  highlights = {
+    -- ['@string'] = { fg = '$cyan' },
+  },
 }
 onedark.load();
 
 -- Catppuccin config
 require('catppuccin').setup({
-    flavour = 'mocha'
+  flavour = 'mocha'
 })
 
 -- Set colorscheme
@@ -44,10 +44,8 @@ vim.cmd.colorscheme('onedark');
 
 -- Lualine
 require('lualine').setup {
-    options = {
-        theme = 'auto',
-        icons_enabled = true,
-    }
+  options = {
+    theme = 'auto',
+    icons_enabled = true,
+  }
 }
-
-

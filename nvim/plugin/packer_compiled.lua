@@ -99,10 +99,20 @@ _G.packer_plugins = {
     path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-plugins"] = {
+    loaded = true,
+    path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-plugins",
+    url = "https://github.com/KadoBOT/cmp-plugins"
   },
   cmp_luasnip = {
     loaded = true,

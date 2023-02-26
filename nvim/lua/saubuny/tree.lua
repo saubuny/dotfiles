@@ -4,9 +4,9 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Setup
 require("nvim-tree").setup({
-    view = {
-        float = {
-            enable = false,
-        }
+  view = {
+    float = {
+      enable = false,
     }
+  }
 })

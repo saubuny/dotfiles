@@ -38,6 +38,3 @@ vim.keymap.set('n', '<leader>fh', telescope.help_tags, opts)
 
 -- Nvim-tree
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
-
-
-

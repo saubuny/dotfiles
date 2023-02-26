@@ -102,12 +102,22 @@ cmp.setup({
       { name = 'luasnip' },
     }, {
       { name = 'path' }
+    }, {
+      { name = 'nvim_lua' }
+    }, {
+      { name = 'plugin' }
     }),
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
       end,
     },
+})
+
+-- Completion for plugins
+require("cmp-plugins").setup({
+  files = { ".*\\.lua" }  -- default
+  -- files = { "plugins.lua", "some_path/plugins/" } -- Recommended: use static filenames or partial paths
 })
 
 -- File-type specific

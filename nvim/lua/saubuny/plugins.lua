@@ -3,16 +3,16 @@ local fn = vim.fn
 -- Auto-install Packer
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {
-        'git',
-        'clone',
-        '--depth',
-        '1',
-        'https://github.com/wbthomason/packer.nvim',
-        install_path,
-    }
-    print 'Installing Packer... Please restart Neovim';
-    vim.cmd [[packadd packer.nvim]]
+  PACKER_BOOTSTRAP = fn.system {
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path,
+  }
+  print 'Installing Packer... Please restart Neovim';
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- Autoreload Neovim on plugins.lua save
@@ -26,94 +26,93 @@ vim.cmd [[
 -- Packer protected call (No annoying errors)
 local status_ok, packer = pcall(require, 'packer');
 if not status_ok then
-    return
+  return
 end
 
 -- Packer settings
 packer.init {
-    display = {
-        -- Display in a popup window
-        open_fn = function()
-            return require('packer.util').float { border = 'rounded' }
-        end,
-    }
+  display = {
+    -- Display in a popup window
+    open_fn = function()
+      return require('packer.util').float { border = 'rounded' }
+    end,
+  }
 }
 
 -- Install plugins here
 return packer.startup(function(use)
-    use 'wbthomason/packer.nvim' -- Self-managing packer
-    
-    -- Free colorschemes
-    -- use 'lunarvim/colorschemes'
+  use 'wbthomason/packer.nvim' -- Self-managing packer
 
-    -- Best colorscheme
-    use 'navarasu/onedark.nvim'
+  -- Free colorschemes
+  -- use 'lunarvim/colorschemes'
 
-    -- Cat
-    use { "catppuccin/nvim", as = "catppuccin" }
+  -- Best colorscheme
+  use 'navarasu/onedark.nvim'
 
-    -- Better looking indents
-    use "lukas-reineke/indent-blankline.nvim"
+  -- Cat
+  use { 'catppuccin/nvim', as = 'catppuccin' }
 
-    -- Fancy bar at the bottom 
-    use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+  -- Better looking indents
+  use 'lukas-reineke/indent-blankline.nvim'
 
-    -- File tree
-    use {
-      'nvim-tree/nvim-tree.lua',
-      requires = {
-        'nvim-tree/nvim-web-devicons', -- optional, for file icons
-      },
-      tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+  -- Fancy bar at the bottom
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
-    -- Annoying dependencies that act weird 
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-tree/nvim-web-devicons'
+  -- File tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
-    -- Fuzzy finding (make sure ripgrep is installed)
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.1',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
+  -- Annoying dependencies that act weird
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-tree/nvim-web-devicons'
 
-    -- Terminal
-    use {"akinsho/toggleterm.nvim", tag = '*' }
+  -- Fuzzy finding (make sure ripgrep is installed)
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
 
-    -- Syntax highlighting
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-    }
+  -- Terminal
+  use { 'akinsho/toggleterm.nvim', tag = '*' }
 
-    -- Completion 
-    use "hrsh7th/nvim-cmp"          -- The plugin itself
-    use "hrsh7th/cmp-buffer"        -- Buffer completion
-    use "hrsh7th/cmp-path"          -- Path completion
-    use "hrsh7th/cmp-cmdline"       -- Command line completion
-    use "hrsh7th/cmp-nvim-lsp"      -- LSP completion
-    use 'saadparwaiz1/cmp_luasnip'  -- Luasnip completions
+  -- Syntax highlighting
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
 
-    -- Snippets
-    use 'L3MON4D3/LuaSnip'  -- Snippet engine
-    
-    -- LSP
-    use 'neovim/nvim-lspconfig'             -- Configurations for Nvim LSP
-    use 'williamboman/mason.nvim'           -- Easy installion of servers + linters + formatters
-    use 'williamboman/mason-lspconfig.nvim' -- Compatibility with Nvim LSP
+  -- Completion
+  use 'hrsh7th/nvim-cmp' -- The plugin itself
+  use 'hrsh7th/cmp-buffer' -- Buffer completion
+  use 'hrsh7th/cmp-path' -- Path completion
+  use 'hrsh7th/cmp-cmdline' -- Command line completion
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP completion
+  use 'saadparwaiz1/cmp_luasnip' -- Luasnip completions
+  use 'hrsh7th/cmp-nvim-lua' -- Vims api
+  use 'KadoBOT/cmp-plugins' -- Plugins
 
-    
-    -- Automatically set up packer config (Put at end)
-    if PACKER_BOOTSTRAP then
-        require('packer').sync()
-    end
+  -- Snippets
+  use 'L3MON4D3/LuaSnip' -- Snippet engine
+
+  -- LSP
+  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use 'williamboman/mason.nvim' -- Easy installion of servers + linters + formatters
+  use 'williamboman/mason-lspconfig.nvim' -- Compatibility with Nvim LSP
+
+
+  -- Automatically set up packer config (Put at end)
+  if PACKER_BOOTSTRAP then
+    require('packer').sync()
+  end
 end)
-
-
-
