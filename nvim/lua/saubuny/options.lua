@@ -29,6 +29,9 @@ local options = {
 -- Let - work with word commands
 vim.cmd [[set iskeyword+=-]]
 
+-- Disable annoying autocommenting on <CR>
+vim.cmd [[set fo-=r fo -=o]]
+
 -- Apply options
 for k, v in pairs(options) do
     vim.opt[k] = v
