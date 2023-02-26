@@ -14,7 +14,7 @@ local options = {
     cmdheight = 1,
     splitbelow = true,
     splitright = true,
-    wrap = false,
+    wrap = true,
     showmode = true,
     termguicolors = true,
     signcolumn = 'yes',
@@ -39,3 +39,13 @@ end,
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+
+-- Smaller indents for some languages
+vim.api.nvim_create_autocmd("FileType", { 
+    pattern = { "lua", "html", "javascript", "typescript", "typescriptreact", "javascriptreact" },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+    end,
+})
+
