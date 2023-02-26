@@ -1,4 +1,4 @@
--- Set colorscheme
+-- Onedark config
 local onedark = require('onedark')
 onedark.setup {
     style = 'dark',
@@ -33,6 +33,15 @@ onedark.setup {
 }
 onedark.load();
 
+-- Catppuccin config
+require('catppuccin').setup({
+    flavour = 'mocha'
+})
+
+-- Set colorscheme
+vim.cmd.colorscheme('onedark');
+
+
 -- Lualine
 require('lualine').setup {
     options = {
@@ -40,3 +49,5 @@ require('lualine').setup {
         icons_enabled = true,
     }
 }
+
+

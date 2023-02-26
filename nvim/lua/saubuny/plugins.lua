@@ -49,7 +49,13 @@ return packer.startup(function(use)
     -- Best colorscheme
     use 'navarasu/onedark.nvim'
 
-    -- Practically mandatory
+    -- Cat
+    use { "catppuccin/nvim", as = "catppuccin" }
+
+    -- Better looking indents
+    use "lukas-reineke/indent-blankline.nvim"
+
+    -- Fancy bar at the bottom 
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }

@@ -29,8 +29,11 @@ local options = {
 -- Let - work with word commands
 vim.cmd [[set iskeyword+=-]]
 
--- Disable annoying autocommenting on <CR>
-vim.cmd [[set fo-=r fo -=o]]
+-- Remove annoying autocommenting
+vim.api.nvim_create_autocmd("BufEnter", { callback = function()
+    vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" } 
+end,
+})
 
 -- Apply options
 for k, v in pairs(options) do
