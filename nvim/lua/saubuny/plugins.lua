@@ -97,9 +97,12 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-buffer"  -- Buffer completion
     use "hrsh7th/cmp-path"    -- Path completion
     use "hrsh7th/cmp-cmdline" -- Command line completion
+    
+    -- LSP
+
 
     
-    -- Automaticall set up packer config (Put at end)
+    -- Automatically set up packer config (Put at end)
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
