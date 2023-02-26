@@ -1,9 +1,6 @@
 -- Require
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-    return
-end
-
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 -- Icons for menu
 local kind_icons = {
@@ -62,7 +59,6 @@ local kind_icons2 = {
   TypeParameter = '',
 }
 
-
 -- Setup
 cmp.setup({
     window = {
@@ -79,7 +75,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
 
         -- Navigate completion
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), 
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-k>'] = cmp.mapping.select_prev_item(),
         ['<C-j>'] = cmp.mapping.select_next_item(),
     }),
@@ -92,17 +88,26 @@ cmp.setup({
             -- Tell us where the completion came from
             vim_item.menu = ({
                 buffer = "[Buffer]",
-                path = "[Path]"
+                path = "[Path]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snippet]",
             })[entry.source.name]
 
             return vim_item
         end,
     },
     sources = cmp.config.sources({
-        -- { name = 'nvim_lsp' },
+      { name = 'nvim_lsp' },
     }, {
-        { name = 'buffer' },
-    })
+      { name = 'luasnip' },
+    }, {
+      { name = 'path' }
+    }),
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end,
+    },
 })
 
 -- File-type specific
