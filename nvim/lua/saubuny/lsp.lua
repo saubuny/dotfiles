@@ -62,7 +62,9 @@ local on_attach = function(client, bufnr)
   vim.diagnostic.config(config)
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local cap = vim.lsp.protocol.make_client_capabilities()
+cap.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = require('cmp_nvim_lsp').default_capabilities(cap)
 
 -- Better signs in gutter
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -97,16 +99,41 @@ lsp['lua_ls'].setup({
   },
 })
 
--- JS, TS, JSX, TSX
+-- JS, TS, JSX, TSX (config via a tsconfig.json or jsconfig.json)
+lsp['tsserver'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 -- Tailwind in html, JSX, TSX
+lsp['tailwindcss'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 -- Rust
+lsp['rust_analyzer'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 -- html
+lsp['html'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 -- css
+lsp['cssls'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 -- emmet in html, JSX, TSX
+lsp['emmet_ls'].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 -- C
+
