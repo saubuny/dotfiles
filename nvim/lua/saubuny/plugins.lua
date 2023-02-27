@@ -109,7 +109,7 @@ return packer.startup(function(use)
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use 'williamboman/mason.nvim' -- Easy installion of servers + linters + formatters
   use 'williamboman/mason-lspconfig.nvim' -- Compatibility with Nvim LSP
-
+  use 'j-hui/fidget.nvim' -- Visual UI for LSP progress
 
   -- Automatically set up packer config (Put at end)
   if PACKER_BOOTSTRAP then

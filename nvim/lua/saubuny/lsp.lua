@@ -35,7 +35,10 @@ require('mason-lspconfig').setup({
   ensure_installed = { 'asm_lsp', 'clangd', 'cssls', 'emmet_ls', 'jsonls', 'tsserver', 'lua_ls', 'tailwindcss', 'rust_analyzer', 'html' },
 })
 
--- Server setup
+-- Cool UI
+require('fidget').setup()
+
+-- Server setup (note: tsserver only works when a tsconfig.json or jsconfig.json are present)
 local lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -46,6 +49,34 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
   vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+
+  -- Extra config
+  local config = {
+    virtual_text = true,
+    update_in_insert = true,
+    underline = false,
+    serverity_sort = true,
+  }
+  vim.diagnostic.config(config)
+end
+
+-- Borders on floating windows
+local border = {
+  { "🭽", "FloatBorder" },
+  { "▔",  "FloatBorder" },
+  { "🭾", "FloatBorder" },
+  { "▕",  "FloatBorder" },
+  { "🭿", "FloatBorder" },
+  { "▁",  "FloatBorder" },
+  { "🭼", "FloatBorder" },
+  { "▏",  "FloatBorder" },
+}
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()

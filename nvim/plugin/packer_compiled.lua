@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/Users/saubuny/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
