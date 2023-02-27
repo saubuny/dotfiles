@@ -114,6 +114,11 @@ return packer.startup(function(use)
   use 'williamboman/mason-lspconfig.nvim' -- Compatibility with Nvim LSP
   use 'j-hui/fidget.nvim' -- Visual UI for LSP progress
 
+  -- Formatting
+  use 'jose-elias-alvarez/null-ls.nvim' -- Language server that injects formatters
+  use 'jay-babu/mason-null-ls.nvim' -- Compatibility with Mason
+
+
   -- Automatically set up packer config (Put at end)
   if PACKER_BOOTSTRAP then
     require('packer').sync()

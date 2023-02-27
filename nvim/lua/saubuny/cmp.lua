@@ -83,7 +83,7 @@ cmp.setup({
         fields = { 'kind', 'abbr', 'menu' },
         format = function(entry, vim_item)
             -- Include icons
-            vim_item.kind = string.format('%s', kind_icons2[vim_item.kind])
+            vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
 
             -- Tell us where the completion came from
             vim_item.menu = ({
