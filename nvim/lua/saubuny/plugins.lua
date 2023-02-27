@@ -80,6 +80,9 @@ return packer.startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
+  -- Rainbow brackets for fun
+  -- use 'mrjones2014/nvim-ts-rainbow'
+
   -- Terminal
   use { 'akinsho/toggleterm.nvim', tag = '*' }
 
