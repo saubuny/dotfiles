@@ -16,6 +16,7 @@ vim.g.maplocalleader = ' '
 -- Navigate buffers
 vim.keymap.set('n', '<S-L>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-H>', ':bprevious<CR>', opts)
+vim.keymap.set('n', '<S-C>', ':bdelete<CR>', opts)
 
 -- Indent in visual mode better
 vim.keymap.set('v', '<', '<gv', opts)
