@@ -118,10 +118,10 @@ lsp['rust_analyzer'].setup({
 })
 
 -- html
-lsp['html'].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
+-- lsp['html'].setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- })
 
 -- css
 lsp['cssls'].setup({
@@ -129,11 +129,21 @@ lsp['cssls'].setup({
   capabilities = capabilities,
 })
 
+-- Make this not work inside tags and className
 -- emmet in html, JSX, TSX
 lsp['emmet_ls'].setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ['markup.attributes'] = {
+          ['class'] = 'className'
+        },
+      },
+    },
+  }
 })
 
 -- C
-
