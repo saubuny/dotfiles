@@ -52,7 +52,9 @@ local on_attach = function(client, bufnr)
 
   -- Extra config
   local config = {
-    virtual_text = true,
+    virtual_text = {
+      prefix = '',
+    },
     update_in_insert = true,
     underline = false,
     serverity_sort = true,
@@ -60,26 +62,18 @@ local on_attach = function(client, bufnr)
   vim.diagnostic.config(config)
 end
 
--- Borders on floating windows
-local border = {
-  { "🭽", "FloatBorder" },
-  { "▔",  "FloatBorder" },
-  { "🭾", "FloatBorder" },
-  { "▕",  "FloatBorder" },
-  { "🭿", "FloatBorder" },
-  { "▁",  "FloatBorder" },
-  { "🭼", "FloatBorder" },
-  { "▏",  "FloatBorder" },
-}
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or border
-  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+-- Better signs in gutter
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Borders on floating windows
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
 -- Lua
 lsp['lua_ls'].setup({
