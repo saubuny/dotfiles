@@ -130,6 +130,9 @@ return packer.startup(function(use)
     end,
   })
 
+  -- Close html tags automatically
+  use("windwp/nvim-ts-autotag")
+
   -- Automatically set up packer config (Put at end)
   if PACKER_BOOTSTRAP then
     require("packer").sync()
