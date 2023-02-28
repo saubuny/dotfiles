@@ -154,6 +154,7 @@ lsp["emmet_ls"].setup({
 				["markup.attributes"] = {
 					["class"] = "className",
 				},
+				["bem.enabled"] = true,
 			},
 		},
 	},
