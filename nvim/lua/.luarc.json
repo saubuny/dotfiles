@@ -31,6 +31,7 @@
         "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
         "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp-path/after",
         "/Users/saubuny/.local/share/nvim/site/pack/packer/start/cmp_luasnip/after",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ]
 }
