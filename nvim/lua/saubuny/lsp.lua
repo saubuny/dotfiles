@@ -59,7 +59,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  vim.keymap.set("n", "sh", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "sd", vim.diagnostic.open_float, opts)
   vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format({ async = true })
   end, opts)
@@ -81,7 +81,7 @@ cap.textDocument.completion.completionItem.snippetSupport = true
 local capabilities = require("cmp_nvim_lsp").default_capabilities(cap)
 
 -- Better signs in gutter
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
