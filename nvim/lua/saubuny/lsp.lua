@@ -66,9 +66,10 @@ local on_attach = function(client, bufnr)
 
   -- Extra config
   local config = {
-    virtual_text = {
-      prefix = "",
-    },
+    -- virtual_text = {
+    --   prefix = "",
+    -- },
+    virtual_text = false,
     update_in_insert = true,
     underline = false,
     serverity_sort = true,
