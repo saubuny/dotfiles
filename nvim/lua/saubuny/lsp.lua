@@ -144,6 +144,12 @@ lsp["cssls"].setup({
   capabilities = capabilities,
 })
 
+-- markdown
+lsp["marksman"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
+
 -- This sucks for JSX and TSX files
 -- emmet in html, JSX, TSX
 -- lsp["emmet_ls"].setup({
