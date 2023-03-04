@@ -149,6 +149,17 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Markdown preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
+	-- nand2tetris
+	use("sevko/vim-nand2tetris-syntax")
+
 	-- Automatically set up packer config (Put at end)
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
