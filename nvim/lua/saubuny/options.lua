@@ -16,16 +16,16 @@ local options = {
   wrap = true,
   showmode = true,
   termguicolors = true,
-  signcolumn = 'yes',
+  signcolumn = "yes",
   -- Editing
-  fileencoding = 'utf-8',
-  clipboard = 'unnamedplus',
-  mouse = 'c',
-  completeopt = { 'menuone', 'noselect' },
+  fileencoding = "utf-8",
+  clipboard = "unnamedplus",
+  mouse = "c",
+  completeopt = { "menuone", "noselect" },
 }
 
 -- Let - work with word commands
-vim.cmd [[set iskeyword+=-]]
+vim.cmd([[set iskeyword+=-]])
 
 -- Remove annoying autocommenting
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -41,7 +41,7 @@ end
 
 -- Smaller indents for some languages
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "lua", "html", "javascript", "typescript", "typescriptreact", "javascriptreact" },
+  pattern = { "lua", "html", "javascript", "typescript", "typescriptreact", "javascriptreact", "json" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
