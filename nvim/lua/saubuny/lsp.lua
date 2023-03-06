@@ -81,6 +81,13 @@ local cap = vim.lsp.protocol.make_client_capabilities()
 cap.textDocument.completion.completionItem.snippetSupport = true
 local capabilities = require("cmp_nvim_lsp").default_capabilities(cap)
 
+-- Autoformatting!
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})
+
 -- Better signs in gutter
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
@@ -147,7 +154,7 @@ lsp["cssls"].setup({
 -- markdown
 lsp["marksman"].setup({
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
 })
 
 -- This sucks for JSX and TSX files
