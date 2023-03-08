@@ -43,14 +43,12 @@ packer.init({
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Self-managing packer
 
-	-- Free colorschemes
-	-- use 'lunarvim/colorschemes'
-
-	-- Best colorscheme
+	-- Colorschemes
 	use("navarasu/onedark.nvim")
-
-	-- Cat
+	use("arcticicestudio/nord-vim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("folke/tokyonight.nvim")
+	use("rmehri01/onenord.nvim")
 
 	-- Better looking indents
 	use("lukas-reineke/indent-blankline.nvim")
