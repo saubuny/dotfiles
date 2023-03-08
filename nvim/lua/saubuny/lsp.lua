@@ -37,6 +37,9 @@ require("mason-lspconfig").setup({
     "jsonls",
     "lua_ls",
     "rust_analyzer",
+    "tsserver",
+    "tailwindcss",
+    "svelte",
   },
 })
 
@@ -127,23 +130,17 @@ lsp["jsonls"].setup({
   capabilities = capabilities,
 })
 
--- This sucks for JSX and TSX files
--- emmet in html, JSX, TSX
--- lsp["emmet_ls"].setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	init_options = {
--- 		html = {
--- 			options = {
--- 				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
--- 				["markup.attributes"] = {
--- 					["class"] = "className",
--- 				},
--- 				["bem.enabled"] = true,
--- 			},
--- 		},
--- 	},
--- })
+-- JS TS TSX
+lsp["tsserver"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+-- Tailwind
+lsp["tailwindcss"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 -- C
 
@@ -151,7 +148,7 @@ lsp["jsonls"].setup({
 local null_ls = require("null-ls")
 
 require("mason-null-ls").setup({
-  ensure_installed = { "stylua", "rustfmt" },
+  ensure_installed = { "stylua", "rustfmt", "prettier" },
   automatic_installation = true,
   automatic_setup = true,
 })
@@ -172,5 +169,8 @@ require("mason-null-ls").setup_handlers({
   end,
   rustfmt = function(source_name, methods)
     null_ls.register(null_ls.builtins.formatting.rustfmt)
+  end,
+  prettier = function(source_name, methods)
+    null_ls.register(null_ls.builtins.formatting.prettier)
   end,
 })
