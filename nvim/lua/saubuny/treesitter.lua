@@ -21,6 +21,7 @@ require("nvim-treesitter.configs").setup({
     "help",
     "comment",
     "cmake",
+    "svelte",
   },
   -- Other settings
   sync_install = false,
