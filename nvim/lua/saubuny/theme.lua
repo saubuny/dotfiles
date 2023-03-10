@@ -42,7 +42,7 @@ require("tokyonight").setup({
 require("onenord").setup()
 
 -- Set colorscheme
-vim.cmd.colorscheme("onedark")
+vim.cmd.colorscheme("onenord")
 
 -- Lualine
 require("lualine").setup({

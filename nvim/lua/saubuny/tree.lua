@@ -1,12 +1,19 @@
 -- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- Setup
 require("nvim-tree").setup({
-  view = {
-    float = {
-      enable = false,
-    }
-  }
+	view = {
+		hide_root_folder = true,
+		-- number = true,
+		-- relativenumber = true,
+		float = {
+			-- enable = true,
+		},
+	},
+	diagnostics = {
+		-- enable = true,
+		-- show_on_dirs = true,
+	},
 })

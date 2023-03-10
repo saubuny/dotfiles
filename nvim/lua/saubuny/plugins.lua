@@ -158,6 +158,11 @@ return packer.startup(function(use)
 	-- nand2tetris
 	use("sevko/vim-nand2tetris-syntax")
 
+	use({
+		"startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	})
+
 	-- Automatically set up packer config (Put at end)
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
